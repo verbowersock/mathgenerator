@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Math Worksheet Generator</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
+    ></script>
+    <script defer src="./script.js"></script>
+    <meta
+      name="description"
+      content="Generate customizable math worksheets (addition, subtraction, multiplication, division) as PDFs."
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <h1>Math Worksheet Generator</h1>
+      </header>
+
+      <main class="app__main">
+        <section class="panel">
+          <h2 class="panel__title">Parameters</h2>
+          <form id="controls" class="controls" autocomplete="off">
+            <div class="controls__row">
+              <div class="field">
+                <label for="worksheetTitle">Worksheet Title</label>
+                <input
+                  type="text"
+                  id="worksheetTitle"
+                  name="worksheetTitle"
+                  value="Math Worksheet"
+                  placeholder="Math Worksheet"
+                />
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="field">
+                <label for="min">Min number</label>
+                <input
+                  type="number"
+                  id="min"
+                  name="min"
+                  value="0"
+                  min="0"
+                  step="1"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="max">Max number</label>
+                <input
+                  type="number"
+                  id="max"
+                  name="max"
+                  value="99"
+                  min="0"
+                  step="1"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="controls__row controls__row--ops">
+              <div class="checkbox">
+                <input type="checkbox" id="opAdd" name="opAdd" checked />
+                <label for="opAdd">Addition (+)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opSub" name="opSub" checked />
+                <label for="opSub">Subtraction (−)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opMul" name="opMul" checked />
+                <label for="opMul">Multiplication (×)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opDiv" name="opDiv" checked />
+                <label for="opDiv">Division (÷)</label>
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="checkbox">
+                <input type="checkbox" id="carryAdd" name="carryAdd" checked />
+                <label for="carryAdd">Allow carry the one (addition)</label>
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="field field--range">
+                <label for="count"
+                  >Problems per page: <span id="countValue">12</span></label
+                >
+                <input
+                  type="range"
+                  id="count"
+                  name="count"
+                  min="1"
+                  max="18"
+                  value="12"
+                />
+              </div>
+            </div>
+
+            <div class="controls__row controls__row--actions">
+              <button type="button" id="previewBtn" class="btn">Refresh</button>
+              <button type="button" id="pdfBtn" class="btn btn--primary">
+                Generate PDF
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel__title">Preview</h2>
+          <div id="preview" class="preview">
+            <div
+              id="loading"
+              class="loading"
+              aria-live="polite"
+              aria-busy="false"
+            >
+              <div class="spinner" aria-hidden="true"></div>
+              <span class="loading__text">Generating…</span>
+            </div>
+            <ol id="problems" class="problems"></ol>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app__footer">
+        <span>© <span id="year"></span> Worksheet Generator</span>
+      </footer>
+    </div>
+  </body>
+</html>
