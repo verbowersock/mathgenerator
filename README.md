@@ -13,7 +13,7 @@ Generate customizable math worksheets (addition, subtraction, multiplication, di
 ## Usage
 1. Open `index.html` in a modern browser.
 2. Set parameters in the Parameters panel.
-3. Click "Preview" to see problems.
+3. Click "Refresh" to regenerate problems.
 4. Click "Generate PDF" to download `worksheet.pdf`.
 
 ## Notes

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Math Worksheet Generator</title>
+    <title>Free Math Worksheet Generator</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,16 +20,46 @@
       name="description"
       content="Generate customizable math worksheets (addition, subtraction, multiplication, division) as PDFs."
     />
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX"
+         crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="app">
       <header class="app__header">
-        <h1>Math Worksheet Generator</h1>
+        <h1>Free Math Worksheet Generator</h1>
       </header>
 
+      <!-- Top Banner Ad -->
+      <div class="ad-container ad-container--top">
+        <!-- Mock ad for preview - replace with real AdSense when approved -->
+        <div class="mock-ad mock-ad--banner">
+          <div class="mock-ad__label">Advertisement</div>
+          <div class="mock-ad__content">
+            <strong>📚 Educational Resources</strong><br>
+            Find the best math learning tools and worksheets for your students
+          </div>
+        </div>
+        
+        <!-- Real AdSense code (commented out for now)
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        -->
+      </div>
+
       <main class="app__main">
-        <section class="panel">
-          <h2 class="panel__title">Parameters</h2>
+        <div class="content-wrapper">
+          <div class="main-content">
+            <section class="panel">
+              <h2 class="panel__title">Parameters</h2>
           <form id="controls" class="controls" autocomplete="off">
             <div class="controls__row">
               <div class="field">
@@ -137,7 +167,83 @@
             <ol id="problems" class="problems"></ol>
           </div>
         </section>
+          </div>
+          
+          <!-- Sidebar with ads -->
+          <aside class="sidebar">
+            <!-- Sidebar Ad 1 -->
+            <div class="ad-container ad-container--sidebar">
+              <!-- Mock ad for preview -->
+              <div class="mock-ad mock-ad--sidebar">
+                <div class="mock-ad__label">Advertisement</div>
+                <div class="mock-ad__content">
+                  <strong>📊 Math Tools</strong><br><br>
+                  Interactive calculators and math resources for students and teachers
+                </div>
+              </div>
+              
+              <!-- Real AdSense code (commented out)
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+              -->
+            </div>
+            
+            <!-- Sidebar Ad 2 -->
+            <div class="ad-container ad-container--sidebar">
+              <!-- Mock ad for preview -->
+              <div class="mock-ad mock-ad--sidebar">
+                <div class="mock-ad__label">Advertisement</div>
+                <div class="mock-ad__content">
+                  <strong>🏫 Education Software</strong><br><br>
+                  Classroom management and learning tools for educators
+                </div>
+              </div>
+              
+              <!-- Real AdSense code (commented out)
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+              -->
+            </div>
+          </aside>
+        </div>
       </main>
+
+      <!-- Bottom Banner Ad -->
+      <div class="ad-container ad-container--bottom">
+        <!-- Mock ad for preview - replace with real AdSense when approved -->
+        <div class="mock-ad mock-ad--banner">
+          <div class="mock-ad__label">Advertisement</div>
+          <div class="mock-ad__content">
+            <strong>🎯 Math Learning Apps</strong><br>
+            Discover interactive games and activities to make math fun!
+          </div>
+        </div>
+        
+        <!-- Real AdSense code (commented out for now)
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        -->
 
       <footer class="app__footer">
         <span>© <span id="year"></span> Worksheet Generator</span>
