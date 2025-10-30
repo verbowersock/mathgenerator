@@ -22,8 +22,15 @@ body {
   margin-bottom: 16px;
 }
 .app__header h1 {
-  margin: 0;
+  margin: 0 0 8px 0;
   font-size: 28px;
+}
+.app__subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 .app__footer {
   margin-top: 24px;
@@ -264,6 +271,17 @@ body {
   background: #059669;
 }
 
+.preview-description {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #15803d;
+  font-weight: 500;
+}
+
 .preview {
   position: relative;
   background: #fff;
@@ -359,14 +377,55 @@ body {
 .ad-container {
   margin: 16px 0;
   text-align: center;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px dashed #cbd5e1;
   border-radius: 8px;
-  padding: 8px;
+  padding: 20px;
   min-height: 100px;
+  display: block;
+  position: relative;
+}
+
+/* Ad Placeholder Styling - Always visible by default */
+.ad-placeholder {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  color: #64748b;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ad-placeholder-text {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ad-placeholder-subtext {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* AdSense container - initially hidden until real ads load */
+.ad-container ins.adsbygoogle {
+  display: none !important;
+  width: 100%;
+}
+
+/* When real ads load, show them and hide placeholder */
+.ad-container.ads-loaded ins.adsbygoogle {
+  display: block !important;
+}
+
+.ad-container.ads-loaded .ad-placeholder {
+  display: none;
 }
 
 .ad-container--top {
@@ -391,67 +450,15 @@ body {
   width: 100%;
 }
 
-/* Mock Ad Styling for Preview */
-.mock-ad {
-  width: 100%;
-  max-width: 728px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 16px;
-  border-radius: 6px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mock-ad--banner {
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.mock-ad--sidebar {
-  height: 200px;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.mock-ad__label {
-  font-size: 10px;
-  opacity: 0.8;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.mock-ad__content {
-  text-align: center;
-  line-height: 1.4;
-}
-
-.mock-ad__content strong {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 4px;
+/* Hide placeholder when ads are loaded */
+.ad-container ins:not(:empty) ~ .ad-container::before,
+.ad-container:has(ins:not(:empty))::before {
+  display: none;
 }
 
 @media (max-width: 720px) {
   .ad-container {
     margin: 12px 0;
     min-height: 80px;
-  }
-
-  .mock-ad--banner {
-    height: 70px;
-    padding: 12px;
-  }
-
-  .mock-ad__content strong {
-    font-size: 14px;
   }
 }

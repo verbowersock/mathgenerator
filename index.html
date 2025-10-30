@@ -3,7 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Free Math Worksheet Generator</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#10b981" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="theme-color" content="#10b981" />
+    
+    <title>Free Math Worksheet Generator - Create Custom PDF Worksheets Online</title>
+    <meta
+      name="description"
+      content="Create unlimited custom math worksheets for free! Generate printable PDFs with addition, subtraction, multiplication, and division problems. Perfect for teachers, homeschooling parents, and students. Customize difficulty levels, problem counts, and worksheet titles."
+    />
+    <meta
+      name="keywords"
+      content="math worksheets, worksheet generator, free math worksheets, printable math worksheets, addition worksheets, subtraction worksheets, multiplication worksheets, division worksheets, math practice, elementary math, homework generator, teacher resources, homeschool math"
+    />
+    <meta name="author" content="Math Worksheet Generator" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://your-domain.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com/" />
+    <meta property="og:title" content="Free Math Worksheet Generator - Create Custom PDF Worksheets" />
+    <meta property="og:description" content="Generate unlimited custom math worksheets for free! Perfect for teachers, parents, and students. Create printable PDFs with customizable difficulty levels." />
+    <meta property="og:image" content="https://your-domain.com/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Math Worksheet Generator" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://your-domain.com/" />
+    <meta property="twitter:title" content="Free Math Worksheet Generator - Create Custom PDF Worksheets" />
+    <meta property="twitter:description" content="Generate unlimited custom math worksheets for free! Perfect for teachers, parents, and students." />
+    <meta property="twitter:image" content="https://your-domain.com/og-image.png" />
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#10b981" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Math Worksheets" />
+    
     <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,43 +62,90 @@
       src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
     ></script>
     <script defer src="./script.js"></script>
-    <meta
-      name="description"
-      content="Generate customizable math worksheets (addition, subtraction, multiplication, division) as PDFs."
-    />
+    
+    <!-- Ad placeholder management - simplified approach -->
+    <script>
+      // Show real ads only when they actually load with content
+      function checkForRealAds() {
+        document.querySelectorAll('.adsbygoogle').forEach(function(ad) {
+          // Check if ad has real content and height
+          if (ad.offsetHeight > 50 && ad.innerHTML.trim() !== '') {
+            ad.closest('.ad-container').classList.add('ads-loaded');
+            console.log('Real ad detected and shown');
+          }
+        });
+      }
+      
+      // Check for real ads periodically
+      if (window.adsbygoogle && window.adsbygoogle.length > 0) {
+        setTimeout(checkForRealAds, 2000);
+        setTimeout(checkForRealAds, 5000);
+      }
+    </script>
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX"
          crossorigin="anonymous"></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Math Worksheet Generator",
+      "description": "Free online tool to create custom math worksheets with addition, subtraction, multiplication, and division problems. Generate printable PDF worksheets for teachers, parents, and students.",
+      "url": "https://your-domain.com",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Custom math worksheets",
+        "PDF generation",
+        "Addition problems",
+        "Subtraction problems", 
+        "Multiplication problems",
+        "Division problems",
+        "Customizable difficulty",
+        "Multiple worksheets",
+        "Printable format"
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": ["Teachers", "Parents", "Students", "Homeschoolers"]
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Math Worksheet Generator"
+      }
+    }
+    </script>
   </head>
   <body>
     <div class="app">
       <header class="app__header">
         <h1>Free Math Worksheet Generator</h1>
+        <p class="app__subtitle">Create custom printable math worksheets in seconds - Perfect for teachers, parents, and students</p>
       </header>
 
       <!-- Top Banner Ad -->
       <div class="ad-container ad-container--top">
-        <!-- Mock ad for preview - replace with real AdSense when approved -->
-        <div class="mock-ad mock-ad--banner">
-          <div class="mock-ad__label">Advertisement</div>
-          <div class="mock-ad__content">
-            <strong>📚 Educational Resources</strong><br>
-            Find the best math learning tools and worksheets for your students
-          </div>
-        </div>
-        
-        <!-- Real AdSense code (commented out for now)
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
              data-ad-slot="XXXXXXXXXX"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
+        <div class="ad-placeholder">
+          <span class="ad-placeholder-text">Advertisement</span>
+          <span class="ad-placeholder-subtext">Space reserved for ads</span>
+        </div>
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-        -->
       </div>
 
       <main class="app__main">
@@ -143,6 +236,20 @@
               </div>
             </div>
 
+            <div class="controls__row">
+              <div class="field">
+                <label for="worksheetCount">Number of worksheets</label>
+                <input
+                  type="number"
+                  id="worksheetCount"
+                  name="worksheetCount"
+                  min="1"
+                  max="50"
+                  value="1"
+                />
+              </div>
+            </div>
+
             <div class="controls__row controls__row--actions">
               <button type="button" id="previewBtn" class="btn">Refresh</button>
               <button type="button" id="pdfBtn" class="btn btn--primary">
@@ -154,6 +261,7 @@
 
         <section class="panel">
           <h2 class="panel__title">Preview</h2>
+          <div id="previewDescription" class="preview-description"></div>
           <div id="preview" class="preview">
             <div
               id="loading"
@@ -173,50 +281,36 @@
           <aside class="sidebar">
             <!-- Sidebar Ad 1 -->
             <div class="ad-container ad-container--sidebar">
-              <!-- Mock ad for preview -->
-              <div class="mock-ad mock-ad--sidebar">
-                <div class="mock-ad__label">Advertisement</div>
-                <div class="mock-ad__content">
-                  <strong>📊 Math Tools</strong><br><br>
-                  Interactive calculators and math resources for students and teachers
-                </div>
-              </div>
-              
-              <!-- Real AdSense code (commented out)
               <ins class="adsbygoogle"
                    style="display:block"
                    data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
                    data-ad-slot="XXXXXXXXXX"
                    data-ad-format="auto"
                    data-full-width-responsive="true"></ins>
+              <div class="ad-placeholder">
+                <span class="ad-placeholder-text">Advertisement</span>
+                <span class="ad-placeholder-subtext">Sidebar Ad Space</span>
+              </div>
               <script>
                    (adsbygoogle = window.adsbygoogle || []).push({});
               </script>
-              -->
             </div>
             
             <!-- Sidebar Ad 2 -->
             <div class="ad-container ad-container--sidebar">
-              <!-- Mock ad for preview -->
-              <div class="mock-ad mock-ad--sidebar">
-                <div class="mock-ad__label">Advertisement</div>
-                <div class="mock-ad__content">
-                  <strong>🏫 Education Software</strong><br><br>
-                  Classroom management and learning tools for educators
-                </div>
-              </div>
-              
-              <!-- Real AdSense code (commented out)
               <ins class="adsbygoogle"
                    style="display:block"
                    data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
                    data-ad-slot="XXXXXXXXXX"
                    data-ad-format="auto"
                    data-full-width-responsive="true"></ins>
+              <div class="ad-placeholder">
+                <span class="ad-placeholder-text">Advertisement</span>
+                <span class="ad-placeholder-subtext">Sidebar Ad Space</span>
+              </div>
               <script>
                    (adsbygoogle = window.adsbygoogle || []).push({});
               </script>
-              -->
             </div>
           </aside>
         </div>
@@ -224,29 +318,22 @@
 
       <!-- Bottom Banner Ad -->
       <div class="ad-container ad-container--bottom">
-        <!-- Mock ad for preview - replace with real AdSense when approved -->
-        <div class="mock-ad mock-ad--banner">
-          <div class="mock-ad__label">Advertisement</div>
-          <div class="mock-ad__content">
-            <strong>🎯 Math Learning Apps</strong><br>
-            Discover interactive games and activities to make math fun!
-          </div>
-        </div>
-        
-        <!-- Real AdSense code (commented out for now)
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
              data-ad-slot="XXXXXXXXXX"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
+        <div class="ad-placeholder">
+          <span class="ad-placeholder-text">Advertisement</span>
+          <span class="ad-placeholder-subtext">Footer banner space</span>
+        </div>
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-        -->
 
       <footer class="app__footer">
-        <span>© <span id="year"></span> Worksheet Generator</span>
+        <span>© <span id="year"></span> Free Math Worksheet Generator</span>
       </footer>
     </div>
   </body>

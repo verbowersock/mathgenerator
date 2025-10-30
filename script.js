@@ -1,4 +1,19 @@
 (function () {
+  // Polyfill for crypto.randomUUID if not available
+  if (!window.crypto || !window.crypto.randomUUID) {
+    if (!window.crypto) window.crypto = {};
+    window.crypto.randomUUID = function () {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+        /[xy]/g,
+        function (c) {
+          var r = (Math.random() * 16) | 0;
+          var v = c == "x" ? r : (r & 0x3) | 0x8;
+          return v.toString(16);
+        }
+      );
+    };
+  }
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
@@ -32,6 +47,10 @@
     const worksheetTitle =
       document.getElementById("worksheetTitle").value.trim() ||
       "Math Worksheet";
+    const worksheetCount = parseInt(
+      document.getElementById("worksheetCount").value,
+      10
+    );
     const opAdd = document.getElementById("opAdd").checked;
     const opSub = document.getElementById("opSub").checked;
     const opMul = document.getElementById("opMul").checked;
@@ -63,6 +82,7 @@
       min,
       max,
       worksheetTitle,
+      worksheetCount: clamp(worksheetCount, 1, 50),
       opAdd,
       opSub,
       opMul,
@@ -163,7 +183,17 @@
     return list;
   }
 
-  function renderPreview(list) {
+  function renderPreview(list, settings) {
+    const previewDescription = document.getElementById("previewDescription");
+
+    // Update preview description based on worksheet count
+    if (settings && settings.worksheetCount > 1) {
+      previewDescription.textContent = `Preview of 1 worksheet (${settings.worksheetCount} unique worksheets will be generated)`;
+      previewDescription.style.display = "block";
+    } else {
+      previewDescription.style.display = "none";
+    }
+
     previewList.innerHTML = "";
     // Grid columns are managed via CSS; ensure consistent item heights using pre block
     list.forEach((p, idx) => {
@@ -197,8 +227,9 @@
       previewTimer = setTimeout(() => {
         const start = Date.now();
         let list = [];
+        let settings = null;
         try {
-          const settings = readControls();
+          settings = readControls();
           list = generateList(settings);
           currentProblems = list; // Store for PDF generation
         } catch (e) {
@@ -213,7 +244,7 @@
         const minVisibleMs = 300;
         const remaining = Math.max(0, minVisibleMs - elapsed);
         setTimeout(() => {
-          renderPreview(list);
+          renderPreview(list, settings);
           loadingEl &&
             ((loadingEl.className = "loading"),
             loadingEl.setAttribute("aria-busy", "false"));
@@ -297,14 +328,116 @@
     return doc;
   }
 
+  function generateMultipleWorksheets(settings) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "pt", format: "letter" });
+
+    for (
+      let worksheetNum = 1;
+      worksheetNum <= settings.worksheetCount;
+      worksheetNum++
+    ) {
+      // Generate new problems for each worksheet
+      const list = generateList(settings);
+
+      // Add page for new worksheet (except for the first one)
+      if (worksheetNum > 1) {
+        doc.addPage();
+      }
+
+      // Add worksheet content
+      addWorksheetToDoc(
+        doc,
+        list,
+        settings.worksheetTitle,
+        worksheetNum,
+        settings.worksheetCount
+      );
+    }
+
+    return doc;
+  }
+
+  function addWorksheetToDoc(doc, list, title, worksheetNum, totalWorksheets) {
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 28;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(18);
+
+    // Use the same title for all worksheets
+    doc.text(title, margin, 48);
+
+    doc.setFontSize(12);
+    const headerY = 92;
+    // Evenly spaced header across three equal columns
+    const headerColWidth = (pageWidth - 2 * margin) / 3;
+    const headerLeftX = margin;
+    const headerCenterX = margin + headerColWidth * 1.5; // center of middle column
+    const headerRightX = pageWidth - margin; // right edge of right column
+    doc.text("Name: _______________", headerLeftX, headerY, { align: "left" });
+    doc.text("Date: _______________", headerCenterX, headerY, {
+      align: "center",
+    });
+    doc.text(`Score: ___ / ${list.length}`, headerRightX, headerY, {
+      align: "right",
+    });
+
+    let y = headerY + 58;
+    const lineHeight = 108; // increase block height for extra space under answer line
+
+    doc.setFontSize(14);
+    // Numbers small, problem content larger
+    doc.setFont("courier", "normal");
+
+    // Since max problems is 18, always use 3 columns and fit everything on one page
+    const cols = 3;
+    const problemsLeftMargin = margin + 40; // Left margin for problems section
+    const problemsRightMargin = margin + 20; // Smaller right margin
+    const problemsWidth = pageWidth - problemsLeftMargin - problemsRightMargin;
+    const colWidth = problemsWidth / cols;
+    const colX = new Array(cols)
+      .fill(0)
+      .map((_, i) => problemsLeftMargin + i * colWidth);
+
+    list.forEach((p, idx) => {
+      const col = idx % cols;
+      const rowInPage = Math.floor(idx / cols);
+      const x = colX[col];
+      const baseY = y + rowInPage * lineHeight;
+
+      const aStr = String(p.a);
+      const bStr = String(p.b);
+      const width = Math.max(aStr.length, bStr.length);
+      const top = `  ${aStr.padStart(width, " ")}`;
+      const bottom = `${p.op} ${bStr.padStart(width, " ")}`;
+      const eq = `${"_".repeat(width + 2)}  `;
+
+      doc.setFontSize(10);
+      doc.text(`${idx + 1}.`, x, baseY);
+      doc.setFontSize(18);
+      const contentX = x + 24; // indent inside column
+      doc.text(top, contentX, baseY + 10);
+      doc.text(bottom, contentX, baseY + 32);
+      doc.text(eq, contentX, baseY + 36);
+    });
+  }
+
   function onPdf() {
     try {
       const settings = readControls();
-      // Use the current preview problems instead of generating new ones
-      const list =
-        currentProblems.length > 0 ? currentProblems : generateList(settings);
-      const doc = toPdf(list, settings.worksheetTitle);
-      doc.save("worksheet.pdf");
+
+      if (settings.worksheetCount === 1) {
+        // Single worksheet - use existing logic with preview problems
+        const list =
+          currentProblems.length > 0 ? currentProblems : generateList(settings);
+        const doc = toPdf(list, settings.worksheetTitle);
+        doc.save("worksheet.pdf");
+      } else {
+        // Multiple worksheets - generate new problems for each
+        const doc = generateMultipleWorksheets(settings);
+        doc.save(`worksheets_${settings.worksheetCount}_sheets.pdf`);
+      }
     } catch (e) {
       alert(e.message || String(e));
     }
@@ -316,8 +449,9 @@
   const controlsEl = document.getElementById("controls");
   if (controlsEl) {
     const onControlChange = (e) => {
-      // Don't refresh preview when title changes - it only affects PDF
-      if (e.target.id === "worksheetTitle") return;
+      // Don't refresh preview when title or worksheet count changes - they only affect PDF
+      if (e.target.id === "worksheetTitle" || e.target.id === "worksheetCount")
+        return;
       onPreview();
     };
     controlsEl.addEventListener("input", onControlChange);
