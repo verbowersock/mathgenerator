@@ -377,55 +377,13 @@ body {
 .ad-container {
   margin: 16px 0;
   text-align: center;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border: 1px dashed #cbd5e1;
-  border-radius: 8px;
-  padding: 20px;
-  min-height: 100px;
   display: block;
   position: relative;
 }
 
-/* Ad Placeholder Styling - Always visible by default */
-.ad-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  color: #64748b;
-  padding: 40px 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.ad-placeholder-text {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ad-placeholder-subtext {
-  font-size: 11px;
-  font-weight: 400;
-  opacity: 0.7;
-  font-style: italic;
-}
-
-/* AdSense container - initially hidden until real ads load */
+/* AdSense container */
 .ad-container ins.adsbygoogle {
-  display: none !important;
   width: 100%;
-}
-
-/* When real ads load, show them and hide placeholder */
-.ad-container.ads-loaded ins.adsbygoogle {
-  display: block !important;
-}
-
-.ad-container.ads-loaded .ad-placeholder {
-  display: none;
 }
 
 .ad-container--top {

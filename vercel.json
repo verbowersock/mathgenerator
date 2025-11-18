@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "https://vbdesigns.dev/mathgenerator/$1",
+      "permanent": true
     }
   ]
 }
