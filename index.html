@@ -168,210 +168,133 @@
         </p>
       </header>
 
-      <!-- Top Banner Ad -->
-      <div class="ad-container ad-container--top">
-        <span class="ad-label">Advertisement</span>
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-5083906216534493"
-          data-ad-slot="1189327733"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-
       <main class="app__main">
-        <div class="content-wrapper">
-          <div class="main-content">
-            <section class="panel">
-              <h2 class="panel__title">Parameters</h2>
-              <form id="controls" class="controls" autocomplete="off">
-                <div class="controls__row">
-                  <div class="field">
-                    <label for="worksheetTitle">Worksheet Title</label>
-                    <input
-                      type="text"
-                      id="worksheetTitle"
-                      name="worksheetTitle"
-                      value="Math Worksheet"
-                      placeholder="Math Worksheet"
-                    />
-                  </div>
-                </div>
-
-                <div class="controls__row">
-                  <div class="field">
-                    <label for="min">Min number</label>
-                    <input
-                      type="number"
-                      id="min"
-                      name="min"
-                      value="0"
-                      min="0"
-                      step="1"
-                      required
-                    />
-                  </div>
-                  <div class="field">
-                    <label for="max">Max number</label>
-                    <input
-                      type="number"
-                      id="max"
-                      name="max"
-                      value="99"
-                      min="0"
-                      step="1"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="controls__row controls__row--ops">
-                  <div class="checkbox">
-                    <input type="checkbox" id="opAdd" name="opAdd" checked />
-                    <label for="opAdd">Addition (+)</label>
-                  </div>
-                  <div class="checkbox">
-                    <input type="checkbox" id="opSub" name="opSub" checked />
-                    <label for="opSub">Subtraction (−)</label>
-                  </div>
-                  <div class="checkbox">
-                    <input type="checkbox" id="opMul" name="opMul" checked />
-                    <label for="opMul">Multiplication (×)</label>
-                  </div>
-                  <div class="checkbox">
-                    <input type="checkbox" id="opDiv" name="opDiv" checked />
-                    <label for="opDiv">Division (÷)</label>
-                  </div>
-                </div>
-
-                <div class="controls__row">
-                  <div class="checkbox">
-                    <input
-                      type="checkbox"
-                      id="carryAdd"
-                      name="carryAdd"
-                      checked
-                    />
-                    <label for="carryAdd">Allow carry the one (addition)</label>
-                  </div>
-                </div>
-
-                <div class="controls__row">
-                  <div class="field field--range">
-                    <label for="count"
-                      >Problems per page: <span id="countValue">12</span></label
-                    >
-                    <input
-                      type="range"
-                      id="count"
-                      name="count"
-                      min="1"
-                      max="18"
-                      value="12"
-                    />
-                  </div>
-                </div>
-
-                <div class="controls__row">
-                  <div class="field">
-                    <label for="worksheetCount">Number of worksheets</label>
-                    <input
-                      type="number"
-                      id="worksheetCount"
-                      name="worksheetCount"
-                      min="1"
-                      max="50"
-                      value="1"
-                    />
-                  </div>
-                </div>
-
-                <div class="controls__row controls__row--actions">
-                  <button type="button" id="previewBtn" class="btn">
-                    Refresh
-                  </button>
-                  <button type="button" id="pdfBtn" class="btn btn--primary">
-                    Generate PDF
-                  </button>
-                </div>
-              </form>
-            </section>
-
-            <section class="panel">
-              <h2 class="panel__title">Preview</h2>
-              <div id="previewDescription" class="preview-description"></div>
-              <div id="preview" class="preview">
-                <div
-                  id="loading"
-                  class="loading"
-                  aria-live="polite"
-                  aria-busy="false"
-                >
-                  <div class="spinner" aria-hidden="true"></div>
-                  <span class="loading__text">Generating…</span>
-                </div>
-                <ol id="problems" class="problems"></ol>
+        <section class="panel">
+          <h2 class="panel__title">Parameters</h2>
+          <form id="controls" class="controls" autocomplete="off">
+            <div class="controls__row">
+              <div class="field">
+                <label for="worksheetTitle">Worksheet Title</label>
+                <input
+                  type="text"
+                  id="worksheetTitle"
+                  name="worksheetTitle"
+                  value="Math Worksheet"
+                  placeholder="Math Worksheet"
+                />
               </div>
-            </section>
+            </div>
+
+            <div class="controls__row">
+              <div class="field">
+                <label for="min">Min number</label>
+                <input
+                  type="number"
+                  id="min"
+                  name="min"
+                  value="0"
+                  min="0"
+                  step="1"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="max">Max number</label>
+                <input
+                  type="number"
+                  id="max"
+                  name="max"
+                  value="99"
+                  min="0"
+                  step="1"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="controls__row controls__row--ops">
+              <div class="checkbox">
+                <input type="checkbox" id="opAdd" name="opAdd" checked />
+                <label for="opAdd">Addition (+)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opSub" name="opSub" checked />
+                <label for="opSub">Subtraction (−)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opMul" name="opMul" checked />
+                <label for="opMul">Multiplication (×)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="opDiv" name="opDiv" checked />
+                <label for="opDiv">Division (÷)</label>
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="checkbox">
+                <input type="checkbox" id="carryAdd" name="carryAdd" checked />
+                <label for="carryAdd">Allow carry the one (addition)</label>
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="field field--range">
+                <label for="count"
+                  >Problems per page: <span id="countValue">12</span></label
+                >
+                <input
+                  type="range"
+                  id="count"
+                  name="count"
+                  min="1"
+                  max="18"
+                  value="12"
+                />
+              </div>
+            </div>
+
+            <div class="controls__row">
+              <div class="field">
+                <label for="worksheetCount">Number of worksheets</label>
+                <input
+                  type="number"
+                  id="worksheetCount"
+                  name="worksheetCount"
+                  min="1"
+                  max="50"
+                  value="1"
+                />
+              </div>
+            </div>
+
+            <div class="controls__row controls__row--actions">
+              <button type="button" id="previewBtn" class="btn">Refresh</button>
+              <button type="button" id="pdfBtn" class="btn btn--primary">
+                Generate PDF
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel__title">Preview</h2>
+          <div id="previewDescription" class="preview-description"></div>
+          <div id="preview" class="preview">
+            <div
+              id="loading"
+              class="loading"
+              aria-live="polite"
+              aria-busy="false"
+            >
+              <div class="spinner" aria-hidden="true"></div>
+              <span class="loading__text">Generating…</span>
+            </div>
+            <ol id="problems" class="problems"></ol>
           </div>
-
-          <!-- Sidebar with ads -->
-          <aside class="sidebar">
-            <!-- Sidebar Ad 1 -->
-            <div class="ad-container ad-container--sidebar">
-              <span class="ad-label">Advertisement</span>
-              <ins
-                class="adsbygoogle"
-                style="display: block"
-                data-ad-client="ca-pub-5083906216534493"
-                data-ad-slot="1109436689"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-
-            <!-- Sidebar Ad 2 -->
-            <div class="ad-container ad-container--sidebar">
-              <span class="ad-label">Advertisement</span>
-              <ins
-                class="adsbygoogle"
-                style="display: block"
-                data-ad-client="ca-pub-5083906216534493"
-                data-ad-slot="3328405914"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            </div>
-          </aside>
-        </div>
+        </section>
       </main>
 
-      <!-- Bottom Banner Ad -->
-      <div class="ad-container ad-container--bottom">
-        <span class="ad-label">Advertisement</span>
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-5083906216534493"
-          data-ad-slot="7076079232"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
       <footer class="app__footer">
         <span>© <span id="year"></span> Free Math Worksheet Generator</span>
       </footer>
