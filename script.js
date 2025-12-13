@@ -54,7 +54,7 @@
         borrowSubCheckbox.checked = false;
       }
     }
-    
+
     if (carryAddCheckbox && opAddCheckbox) {
       carryAddCheckbox.disabled = !opAddCheckbox.checked;
       if (!opAddCheckbox.checked) {
@@ -66,13 +66,53 @@
   if (opSubCheckbox && borrowSubCheckbox) {
     opSubCheckbox.addEventListener("change", updateCheckboxStates);
   }
-  
+
   if (opAddCheckbox && carryAddCheckbox) {
     opAddCheckbox.addEventListener("change", updateCheckboxStates);
   }
 
   // Initialize checkbox states
   updateCheckboxStates();
+
+  // Navigation functionality
+  const navToggle = document.querySelector(".navbar__toggle");
+  const navMenu = document.querySelector(".navbar__menu");
+  const navLinks = document.querySelectorAll(".navbar__link");
+
+  // Mobile menu toggle
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("navbar__menu--active");
+    });
+  }
+
+  // Smooth scrolling for navigation links
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          // Close mobile menu if open
+          if (navMenu) {
+            navMenu.classList.remove("navbar__menu--active");
+          }
+
+          // Update active link
+          navLinks.forEach((navLink) => {
+            navLink.classList.remove("navbar__link--active");
+          });
+          link.classList.add("navbar__link--active");
+        }
+      }
+    });
+  });
 
   function readControls() {
     const minRaw = Number(document.getElementById("min").value);
@@ -165,7 +205,7 @@
     const aStr = a.toString();
     const bStr = b.toString();
     const maxLength = Math.max(aStr.length, bStr.length);
-    
+
     for (let i = 0; i < maxLength; i++) {
       const aDigit = parseInt(aStr[aStr.length - 1 - i]) || 0;
       const bDigit = parseInt(bStr[bStr.length - 1 - i]) || 0;
@@ -187,7 +227,7 @@
         }
       }
     }
-    
+
     // Default behavior: allow borrowing or fallback if no non-borrowing found
     const a = randInt(min, max);
     const b = randInt(min, Math.min(a, max));
@@ -228,7 +268,11 @@
       case "add":
         return generateAddition(settings.min, settings.max, settings.carryAdd);
       case "sub":
-        return generateSubtraction(settings.min, settings.max, settings.borrowSub);
+        return generateSubtraction(
+          settings.min,
+          settings.max,
+          settings.borrowSub
+        );
       case "mul":
         return generateMultiplication(settings.min, settings.max);
       case "div":

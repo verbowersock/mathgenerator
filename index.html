@@ -10,7 +10,7 @@
     ></script>
 
     <!-- Favicon -->
-    <link
+    <!--<link
       rel="icon"
       type="image/x-icon"
       href="https://mathgenerator.xyz/favicon.ico"
@@ -37,6 +37,13 @@
       rel="apple-touch-icon"
       sizes="180x180"
       href="https://mathgenerator.xyz/apple-touch-icon.png"
+    />-->
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,
+    <svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2275%22>📊</text></svg>"
     />
     <link rel="manifest" href="https://mathgenerator.xyz/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#10b981" />
@@ -159,8 +166,36 @@
     </script>
   </head>
   <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <div class="navbar__brand">
+          <span class="navbar__logo">📊</span>
+          <span class="navbar__title">MathGen</span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="#generator" class="navbar__link navbar__link--active"
+              >Generator</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a href="#features" class="navbar__link">Features</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#how-to-use" class="navbar__link">How to Use</a>
+          </li>
+        </ul>
+        <button class="navbar__toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
     <div class="app">
-      <header class="app__header">
+      <header class="app__header" id="generator">
         <h1>Free Math Worksheet Generator</h1>
         <p class="app__subtitle">
           Create custom printable math worksheets in seconds - Perfect for
@@ -300,7 +335,7 @@
       </main>
 
       <!-- Why Choose This Tool Section -->
-      <section class="info-section">
+      <section class="info-section" id="features">
         <div class="info-container">
           <h2 class="info-section__title">
             Why Choose Our Math Worksheet Generator?
@@ -388,7 +423,7 @@
       </section>
 
       <!-- How to Use Section -->
-      <section class="info-section info-section--alt">
+      <section class="info-section info-section--alt" id="how-to-use">
         <div class="info-container">
           <h2 class="info-section__title">
             How to Use the Math Worksheet Generator
@@ -478,7 +513,67 @@
       </section>
 
       <footer class="app__footer">
-        <span>© <span id="year"></span> Free Math Worksheet Generator</span>
+        <div class="footer__content">
+          <div class="footer__section">
+            <span class="footer__title"
+              >© <span id="year"></span> Free Math Worksheet Generator</span
+            >
+
+            <p class="footer__description">
+              Create unlimited custom math worksheets for teachers, parents, and
+              students.
+            </p>
+            <span id="portfolio_link">
+              <a
+                href="https://vbdesigns.dev"
+                target="_blank"
+                class="footer__link"
+                >Created by VB Designs</a
+              >
+            </span>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__title">Resources</h4>
+            <ul class="footer__links">
+              <li>
+                <a href="#generator" class="footer__link"
+                  >Worksheet Generator</a
+                >
+              </li>
+              <li><a href="#features" class="footer__link">Features</a></li>
+              <li><a href="#how-to-use" class="footer__link">How to Use</a></li>
+            </ul>
+          </div>
+          <div class="footer__section">
+            <h4 class="footer__title">Education Links</h4>
+            <ul class="footer__links">
+              <li>
+                <a
+                  href="https://www.khanacademy.org/math"
+                  class="footer__link"
+                  target="_blank"
+                  >Khan Academy Math</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.mathplayground.com/"
+                  class="footer__link"
+                  target="_blank"
+                  >Math Playground</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.coolmath4kids.com/"
+                  class="footer__link"
+                  target="_blank"
+                  >Cool Math for Kids</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </footer>
     </div>
   </body>
