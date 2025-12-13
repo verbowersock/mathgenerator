@@ -41,6 +41,39 @@
     onRange();
   }
 
+  // Handle borrowing checkbox state based on subtraction selection
+  const opSubCheckbox = document.getElementById("opSub");
+  const borrowSubCheckbox = document.getElementById("borrowSub");
+  const carryAddCheckbox = document.getElementById("carryAdd");
+  const opAddCheckbox = document.getElementById("opAdd");
+
+  function updateCheckboxStates() {
+    if (borrowSubCheckbox && opSubCheckbox) {
+      borrowSubCheckbox.disabled = !opSubCheckbox.checked;
+      if (!opSubCheckbox.checked) {
+        borrowSubCheckbox.checked = false;
+      }
+    }
+    
+    if (carryAddCheckbox && opAddCheckbox) {
+      carryAddCheckbox.disabled = !opAddCheckbox.checked;
+      if (!opAddCheckbox.checked) {
+        carryAddCheckbox.checked = false;
+      }
+    }
+  }
+
+  if (opSubCheckbox && borrowSubCheckbox) {
+    opSubCheckbox.addEventListener("change", updateCheckboxStates);
+  }
+  
+  if (opAddCheckbox && carryAddCheckbox) {
+    opAddCheckbox.addEventListener("change", updateCheckboxStates);
+  }
+
+  // Initialize checkbox states
+  updateCheckboxStates();
+
   function readControls() {
     const minRaw = Number(document.getElementById("min").value);
     const maxRaw = Number(document.getElementById("max").value);
@@ -56,6 +89,7 @@
     const opMul = document.getElementById("opMul").checked;
     const opDiv = document.getElementById("opDiv").checked;
     const carryAdd = document.getElementById("carryAdd").checked;
+    const borrowSub = document.getElementById("borrowSub").checked;
     const count = parseInt(document.getElementById("count").value, 10);
 
     if (!(opAdd || opSub || opMul || opDiv)) {
@@ -88,6 +122,7 @@
       opMul,
       opDiv,
       carryAdd,
+      borrowSub,
       count: clamp(count, 1, 18),
     };
   }
@@ -125,7 +160,35 @@
     return { a, b, op: "+", answer: a + b };
   }
 
-  function generateSubtraction(min, max) {
+  function hasBorrow(a, b) {
+    // Check if subtraction requires borrowing by examining each digit position
+    const aStr = a.toString();
+    const bStr = b.toString();
+    const maxLength = Math.max(aStr.length, bStr.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+      const aDigit = parseInt(aStr[aStr.length - 1 - i]) || 0;
+      const bDigit = parseInt(bStr[bStr.length - 1 - i]) || 0;
+      if (aDigit < bDigit) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function generateSubtraction(min, max, allowBorrow = true) {
+    if (!allowBorrow) {
+      // Generate problems that don't require borrowing
+      for (let attempts = 0; attempts < 100; attempts++) {
+        const a = randInt(min, max);
+        const b = randInt(min, Math.min(a, max));
+        if (!hasBorrow(a, b)) {
+          return { a, b, op: "-", answer: a - b };
+        }
+      }
+    }
+    
+    // Default behavior: allow borrowing or fallback if no non-borrowing found
     const a = randInt(min, max);
     const b = randInt(min, Math.min(a, max));
     return { a, b, op: "-", answer: a - b };
@@ -165,7 +228,7 @@
       case "add":
         return generateAddition(settings.min, settings.max, settings.carryAdd);
       case "sub":
-        return generateSubtraction(settings.min, settings.max);
+        return generateSubtraction(settings.min, settings.max, settings.borrowSub);
       case "mul":
         return generateMultiplication(settings.min, settings.max);
       case "div":

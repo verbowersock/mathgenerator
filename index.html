@@ -101,7 +101,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Math Worksheets" />
 
-    <link rel="stylesheet" href="https://mathgenerator.xyz/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -112,7 +112,7 @@
       defer
       src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
     ></script>
-    <script defer src="https://mathgenerator.xyz/script.js"></script>
+    <script defer src="./script.js"></script>
 
     <!-- Google AdSense -->
     <script
@@ -233,8 +233,12 @@
 
             <div class="controls__row">
               <div class="checkbox">
-                <input type="checkbox" id="carryAdd" name="carryAdd" checked />
+                <input type="checkbox" id="carryAdd" name="carryAdd" />
                 <label for="carryAdd">Allow carry the one (addition)</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="borrowSub" name="borrowSub" />
+                <label for="borrowSub">Allow borrowing (subtraction)</label>
               </div>
             </div>
 
@@ -294,6 +298,184 @@
           </div>
         </section>
       </main>
+
+      <!-- Why Choose This Tool Section -->
+      <section class="info-section">
+        <div class="info-container">
+          <h2 class="info-section__title">
+            Why Choose Our Math Worksheet Generator?
+          </h2>
+          <p class="info-section__subtitle">
+            Everything you need to create professional math worksheets, designed
+            with educators in mind
+          </p>
+
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature__icon">📚</div>
+              <h3 class="feature__title">Multiple Operations</h3>
+              <p class="feature__description">
+                Generate worksheets with addition, subtraction, multiplication,
+                and division problems all in one place.
+              </p>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">⚡</div>
+              <h3 class="feature__title">Lightning Fast</h3>
+              <p class="feature__description">
+                Create and download professional PDF worksheets in seconds with
+                our optimized processing engine.
+              </p>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">🎯</div>
+              <h3 class="feature__title">Fully Customizable</h3>
+              <p class="feature__description">
+                Adjust difficulty levels, problem counts, and worksheet titles
+                to match your exact needs.
+              </p>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">📄</div>
+              <h3 class="feature__title">PDF Ready</h3>
+              <p class="feature__description">
+                Generate high-quality PDF worksheets that are ready to print and
+                distribute to students.
+              </p>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">💯</div>
+              <h3 class="feature__title">100% Free</h3>
+              <p class="feature__description">
+                Create unlimited worksheets without any cost, registration, or
+                hidden fees.
+              </p>
+            </div>
+
+            <div class="feature">
+              <div class="feature__icon">🔒</div>
+              <h3 class="feature__title">Privacy First</h3>
+              <p class="feature__description">
+                All processing happens in your browser. No data is collected or
+                stored on our servers.
+              </p>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat__number">4</div>
+              <div class="stat__label">Math Operations</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number">50</div>
+              <div class="stat__label">Max Worksheets</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number">100%</div>
+              <div class="stat__label">Free to Use</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number">0</div>
+              <div class="stat__label">Data Collected</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Use Section -->
+      <section class="info-section info-section--alt">
+        <div class="info-container">
+          <h2 class="info-section__title">
+            How to Use the Math Worksheet Generator
+          </h2>
+          <p class="info-section__subtitle">
+            Step-by-step guide to creating perfect math worksheets for your
+            students
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step__number">1</div>
+              <div class="step__content">
+                <h3 class="step__title">Choose Your Settings</h3>
+                <p class="step__description">
+                  Set your worksheet title, select the difficulty range (min/max
+                  numbers), and choose which math operations to include. You can
+                  mix addition, subtraction, multiplication, and division
+                  problems.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step__number">2</div>
+              <div class="step__content">
+                <h3 class="step__title">Customize the Layout</h3>
+                <p class="step__description">
+                  Adjust the number of problems per worksheet (1-18) and decide
+                  how many worksheets you need (up to 50). Enable "carry the
+                  one" for more challenging addition problems.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step__number">3</div>
+              <div class="step__content">
+                <h3 class="step__title">Preview Your Worksheet</h3>
+                <p class="step__description">
+                  Click "Refresh" to see a preview of your worksheet. The
+                  preview shows exactly how your problems will appear on the
+                  printed page.
+                </p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step__number">4</div>
+              <div class="step__content">
+                <h3 class="step__title">Generate & Download</h3>
+                <p class="step__description">
+                  Click "Generate PDF" to create your worksheet. The PDF will
+                  automatically download to your device, ready for printing and
+                  distribution.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tips">
+            <h3 class="tips__title">💡 Pro Tips for Educators</h3>
+            <ul class="tips__list">
+              <li>
+                Start with smaller number ranges for younger students and
+                gradually increase difficulty
+              </li>
+              <li>
+                Use mixed operations to challenge students and prevent pattern
+                recognition
+              </li>
+              <li>
+                Generate multiple worksheets with the same settings for
+                consistent practice
+              </li>
+              <li>
+                Print extra copies for students who need additional practice or
+                homework
+              </li>
+              <li>
+                Combine different operation types to create comprehensive math
+                assessments
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <footer class="app__footer">
         <span>© <span id="year"></span> Free Math Worksheet Generator</span>
