@@ -46,6 +46,11 @@ body {
   font-size: 24px;
 }
 
+.navbar__logo img {
+  width: 34px;
+  height: 34px;
+}
+
 .navbar__title {
   font-size: 20px;
   letter-spacing: -0.5px;
@@ -173,13 +178,13 @@ body {
 }
 
 .app__header::after {
-  content: "📊🔢✏️📐";
   position: absolute;
   top: 10px;
   right: 20px;
   font-size: 24px;
   opacity: 0.1;
   letter-spacing: 8px;
+  font-weight: bold;
 }
 
 .app__header h1 {
@@ -316,14 +321,14 @@ body {
   margin-bottom: 16px;
 }
 .panel__title {
-  margin: 0 0 12px 0;
-  font-size: 18px;
+  margin: 0 0 22px 0;
+  font-size: 26px;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 28px;
 }
 .controls__row {
   display: flex;
@@ -341,17 +346,17 @@ body {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 .field label {
-  font-size: 13px;
+  font-size: 20px;
   color: #334155;
 }
 .field input {
-  padding: 10px 12px;
+  padding: 14px 18px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 20px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -374,7 +379,8 @@ body {
 }
 
 .field--range input[type="range"] {
-  width: 500px;
+  width: 100%;
+  max-width: 600px;
   height: 6px;
   border-radius: 3px;
   background: #e2e8f0;
@@ -451,12 +457,16 @@ body {
 .checkbox {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 18px;
+}
+
+.checkbox label {
+  font-size: 18px;
 }
 
 .checkbox input {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   appearance: none;
   border: 2px solid #cbd5e1;
   border-radius: 4px;
@@ -478,7 +488,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -501,6 +511,7 @@ body {
 .checkbox input:disabled + label {
   color: #94a3b8;
   cursor: not-allowed;
+  font-size: 20px;
 }
 
 .btn {
@@ -512,6 +523,7 @@ body {
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 18px;
 }
 .btn:hover {
   background: #f1f5f9;
@@ -531,7 +543,7 @@ body {
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 20px;
   color: #15803d;
   font-weight: 500;
 }
@@ -548,7 +560,7 @@ body {
   grid-template-columns: 1fr 1fr auto;
   gap: 12px;
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: 24px;
 }
 .header-field {
   white-space: nowrap;
@@ -620,10 +632,16 @@ body {
 .problems li::marker {
   font-size: 12px;
 }
-
+/* 
 @media (max-width: 720px) {
   .problems {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+@media (max-width: 480px) {
+  .problems {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -706,10 +724,16 @@ body {
 }
 
 .feature__icon {
-  font-size: 64px;
   margin-bottom: 20px;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.feature__icon img {
+  width: 64px;
+  height: 64px;
 }
 
 .feature__title {
@@ -858,16 +882,6 @@ body {
   overflow: hidden;
 }
 
-.tips::before {
-  content: "💡";
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 120px;
-  opacity: 0.1;
-  transform: rotate(15deg);
-}
-
 .tips__title {
   font-size: 24px;
   font-weight: 700;
@@ -952,7 +966,9 @@ body {
   }
 
   .feature__icon {
-    font-size: 56px;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto 20px auto;
   }
 
   .stats {
