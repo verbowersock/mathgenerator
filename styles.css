@@ -332,14 +332,14 @@ body {
 }
 .controls__row {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 .controls__row--ops {
   gap: 20px;
 }
 .controls__row--actions {
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin-top: 4px;
 }
 
@@ -1031,5 +1031,11 @@ body {
 
   .tips__list li {
     font-size: 16px;
+  }
+
+  .controls__row--actions {
+    justify-content: center;
+    gap: 50px;
+    margin-top: 4px;
   }
 }
