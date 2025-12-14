@@ -1,6 +1,6 @@
 {
-  "name": "MathGen",
-  "short_name": "MathGen",
+  "name": "Free Math Worksheet Generator",
+  "short_name": "Math Worksheet Generator",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
