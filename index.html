@@ -285,7 +285,9 @@
             </div>
 
             <div class="controls__row controls__row--actions">
-              <button type="button" id="previewBtn" class="btn">Refresh</button>
+              <button type="button" id="previewBtn" class="btn">
+                Refresh Problems
+              </button>
               <button type="button" id="pdfBtn" class="btn btn--primary">
                 Generate PDF
               </button>
@@ -294,7 +296,7 @@
         </section>
 
         <section class="panel">
-          <h2 class="panel__title">Preview</h2>
+          <h2 class="panel__title">Preview Problems</h2>
           <div id="previewDescription" class="preview-description"></div>
           <div id="preview" class="preview">
             <div
@@ -445,8 +447,8 @@
               <div class="step__content">
                 <h3 class="step__title">Preview Your Worksheet</h3>
                 <p class="step__description">
-                  Click "Refresh" to see a preview of your worksheet. The
-                  preview shows exactly how your problems will appear on the
+                  Click "Refresh Problems" to see a preview of your worksheet.
+                  The preview shows exactly how your problems will appear on the
                   printed page.
                 </p>
               </div>
@@ -571,6 +573,36 @@
           </div>
         </div>
       </footer>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3 class="modal__title">Thank you for using Math Generator!</h3>
+          <button class="modal__close" id="closeModal">&times;</button>
+        </div>
+        <div class="modal__body">
+          <p>
+            If this tool helped you create worksheets for your students, please
+            consider supporting its development.
+          </p>
+          <div class="modal__buttons">
+            <a
+              href="https://buymeacoffee.com/vbdesigns"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--primary modal__donate"
+            >
+              ☕ Buy me a coffee
+            </a>
+            <button class="btn modal__later" id="laterBtn">Maybe later</button>
+          </div>
+          <p class="modal__footer-text">
+            Your support helps keep this tool free for everyone!
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
