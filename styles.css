@@ -559,7 +559,7 @@ body {
   background: #fff;
   border: 1px dashed #cbd5e1;
   border-radius: 12px;
-  padding: 16px;
+  padding: 36px 16px 36px 36px;
 }
 .preview__header {
   display: grid;
